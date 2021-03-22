@@ -17,8 +17,19 @@ public class DIYarrayList<T> implements List<T> {
         elementData = new Object[capasity];
     }
 
+    static <T> void copy(List<? super T> dest, List<? extends T> src) {
+        for (int i = 0; i < src.size(); i++) {
+            dest.add(src.get(i));
+        }
+    }
+
+    static<T> void sort (List<T> list, Comparator<? super T> c) {
+
+    }
+
     @Override
     public void sort(Comparator<? super T> c) {
+//        Arrays.sort(elementData, (first, second) -> sfd);
     }
 
     @Override
@@ -47,10 +58,14 @@ public class DIYarrayList<T> implements List<T> {
     }
 
     @Override
-    public int size() { return this.size; }
+    public int size() {
+        return this.size;
+    }
 
     @Override
-    public boolean isEmpty() {return size == 0;}
+    public boolean isEmpty() {
+        return size == 0;
+    }
 
     @Override
     public boolean contains(Object o) {
@@ -74,12 +89,9 @@ public class DIYarrayList<T> implements List<T> {
 
     @Override
     public boolean add(T t) {
-        if (size == capasity) {
-            growArray();
-        } else {
-            elementData[size] = t;
-            size++;
-        }
+        if (size == capasity) growArray();
+        elementData[size] = t;
+        size++;
 
         return true;
     }
@@ -121,7 +133,7 @@ public class DIYarrayList<T> implements List<T> {
 
     @Override
     public T get(int index) {
-        throw new UnsupportedOperationException();
+        return (T) elementData[index];
     }
 
     @Override
@@ -170,6 +182,9 @@ public class DIYarrayList<T> implements List<T> {
     }
 
     private void growArray() {
-        capasity = capasity/2 + capasity;
+        capasity = capasity / 2 + capasity;
+        Object[] newElementdata;
+        newElementdata = Arrays.copyOf(elementData, capasity);
+        elementData = newElementdata;
     }
 }
