@@ -25,6 +25,8 @@
 
     <modules>
         <module>hw01-maven</module>
+        <module>hw04-generics-collections</module>
+        <module>hw04-generics-collections</module>
     </modules>
 
     <properties>

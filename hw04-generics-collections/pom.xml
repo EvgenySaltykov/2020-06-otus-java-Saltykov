@@ -36,7 +36,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>otus.home_work.hw04.DIYarrayList</mainClass>
+                            <mainClass>otus.home_work.hw04.TestList</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

@@ -7,9 +7,18 @@ import java.util.function.UnaryOperator;
 import java.util.stream.Stream;
 
 public class DIYarrayList<T> implements List<T> {
+    private Object[] elementData;
+    private int size = 0;
+    private static final int DEFAULT_CAPACITY = 10;
+    private int capasity;
+
+    public DIYarrayList() {
+        capasity = DEFAULT_CAPACITY;
+        elementData = new Object[capasity];
+    }
+
     @Override
     public void sort(Comparator<? super T> c) {
-
     }
 
     @Override
@@ -38,14 +47,10 @@ public class DIYarrayList<T> implements List<T> {
     }
 
     @Override
-    public int size() {
-        throw new UnsupportedOperationException();
-    }
+    public int size() { return this.size; }
 
     @Override
-    public boolean isEmpty() {
-        throw new UnsupportedOperationException();
-    }
+    public boolean isEmpty() {return size == 0;}
 
     @Override
     public boolean contains(Object o) {
@@ -69,7 +74,14 @@ public class DIYarrayList<T> implements List<T> {
 
     @Override
     public boolean add(T t) {
-        throw new UnsupportedOperationException();
+        if (size == capasity) {
+            growArray();
+        } else {
+            elementData[size] = t;
+            size++;
+        }
+
+        return true;
     }
 
     @Override
@@ -155,5 +167,9 @@ public class DIYarrayList<T> implements List<T> {
     @Override
     public void replaceAll(UnaryOperator<T> operator) {
 
+    }
+
+    private void growArray() {
+        capasity = capasity/2 + capasity;
     }
 }
