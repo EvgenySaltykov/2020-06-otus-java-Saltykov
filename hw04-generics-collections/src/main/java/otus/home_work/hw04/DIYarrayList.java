@@ -23,13 +23,13 @@ public class DIYarrayList<T> implements List<T> {
         }
     }
 
-    static<T> void sort (List<T> list, Comparator<? super T> c) {
-
+    static <T> void sort(List<T> list, Comparator<? super T> c) {
+        T[] arr = (T[]) list.toArray();
+        Arrays.sort(arr, c);
     }
 
     @Override
     public void sort(Comparator<? super T> c) {
-//        Arrays.sort(elementData, (first, second) -> sfd);
     }
 
     @Override
@@ -79,7 +79,7 @@ public class DIYarrayList<T> implements List<T> {
 
     @Override
     public Object[] toArray() {
-        throw new UnsupportedOperationException();
+        return Arrays.copyOf(elementData, size);
     }
 
     @Override
@@ -108,7 +108,16 @@ public class DIYarrayList<T> implements List<T> {
 
     @Override
     public boolean addAll(Collection<? extends T> c) {
-        throw new UnsupportedOperationException();
+        int newSize = size + c.size();
+        if (newSize >= capasity) growArray(c.size());
+
+        Object[] addArr = c.toArray();
+        for (Object e : addArr) {
+            elementData[size] = e;
+            size++;
+        }
+
+        return true;
     }
 
     @Override
@@ -182,7 +191,20 @@ public class DIYarrayList<T> implements List<T> {
     }
 
     private void growArray() {
-        capasity = capasity / 2 + capasity;
+        capasity = capasity + capasity / 2;
+
+        rewriteArray();
+    }
+
+    private void growArray(int newSize) {
+        if (size + newSize >= capasity) {
+            capasity = (size + newSize) + (size + newSize) / 2;
+        }
+
+        rewriteArray();
+    }
+
+    private void rewriteArray() {
         Object[] newElementdata;
         newElementdata = Arrays.copyOf(elementData, capasity);
         elementData = newElementdata;
