@@ -46,8 +46,12 @@ public class TestList {
         //Отсортировать List с помощью компаратора
         System.out.println("\n" + "nums.sort");
         DIYarrayList.sort(nums, new IntegerComparator());
-//        nums.sort(new IntegerComparator());
         for (int m = 0; m < nums.size(); m++) System.out.print(nums.get(m) + "; ");
 
+        System.out.println("\n" + "test");
+        Integer[] u = new Integer[] {5, 3, 11, 8, 7};
+        Arrays.sort(u, new IntegerComparator());
+//        Arrays.sort(u);
+        for (int y: u) System.out.print(y + "; ");
     }
 }

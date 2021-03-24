@@ -23,6 +23,7 @@ public class DIYarrayList<T> implements List<T> {
         }
     }
 
+//    static <T> void sort(List<T> list, Comparator<? super T> c) {
     static <T> void sort(List<T> list, Comparator<? super T> c) {
         T[] arr = (T[]) list.toArray();
         Arrays.sort(arr, c);
