@@ -10,7 +10,7 @@ public class TestList {
         //создать коллекцию из 25 случайных неповторяющихся чисел
         int i = 1;
         while (i < 25) {
-            int n = (int) (Math.random()*100);
+            int n = (int) (Math.random() * 100);
             if (nums.isEmpty()) nums.add(n);
             for (int j = 0; j < nums.size(); j++) {
                 if (n == nums.get(j)) {
@@ -37,7 +37,7 @@ public class TestList {
         System.out.println("\n" + "nums.copy");
         for (int l = 0; l < copyNums.size(); l++) System.out.print(copyNums.get(l) + "; ");
 
-        //добавить все элеметы из другой коллекции
+//        добавить все элеметы из другой коллекции
         List<Integer> addList = new ArrayList<>(Arrays.asList(234, 456, 678, 987, 453, 859, 221));
         nums.addAll(addList);
         System.out.println("\n" + "nums.addAll");
@@ -47,11 +47,5 @@ public class TestList {
         System.out.println("\n" + "nums.sort");
         DIYarrayList.sort(nums, new IntegerComparator());
         for (int m = 0; m < nums.size(); m++) System.out.print(nums.get(m) + "; ");
-
-        System.out.println("\n" + "test");
-        Integer[] u = new Integer[] {5, 3, 11, 8, 7};
-        Arrays.sort(u, new IntegerComparator());
-//        Arrays.sort(u);
-        for (int y: u) System.out.print(y + "; ");
     }
 }

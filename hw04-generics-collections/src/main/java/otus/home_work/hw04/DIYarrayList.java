@@ -23,10 +23,11 @@ public class DIYarrayList<T> implements List<T> {
         }
     }
 
-//    static <T> void sort(List<T> list, Comparator<? super T> c) {
+    //    static <T> void sort(List<T> list, Comparator<? super T> c) {
     static <T> void sort(List<T> list, Comparator<? super T> c) {
         T[] arr = (T[]) list.toArray();
         Arrays.sort(arr, c);
+        for (int i = 0; i < arr.length; i++) list.set(i, arr[i]);
     }
 
     @Override
@@ -138,7 +139,7 @@ public class DIYarrayList<T> implements List<T> {
 
     @Override
     public void clear() {
-
+        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -148,12 +149,18 @@ public class DIYarrayList<T> implements List<T> {
 
     @Override
     public T set(int index, T element) {
-        throw new UnsupportedOperationException();
+        if (index > capasity) {
+            capasity = index + index/2;
+            rewriteArray();
+        }
+        Object oldElement = elementData[index];
+        elementData[index] = element;
+        return (T) oldElement;
     }
 
     @Override
     public void add(int index, T element) {
-
+        throw new UnsupportedOperationException();
     }
 
     @Override
