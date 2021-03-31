@@ -35,7 +35,7 @@
         <maven.compiler.reliase>${java.version}</maven.compiler.reliase>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <com.google.guava.version>27.1-jre</com.google.guava.version>
+        <com.google.guava.version>29.0-jre</com.google.guava.version>
         <my.variable>42</my.variable>
     </properties>
 
